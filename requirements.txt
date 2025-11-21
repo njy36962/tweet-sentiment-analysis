@@ -4,3 +4,4 @@ numpy
 joblib
 nltk
 textblob
+scikit-learn
