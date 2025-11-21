@@ -1,25 +1,15 @@
-# 📦 Streamlit App Starter Kit 
-```
-⬆️ (Replace above with your app's name)
-```
+# 🤖 Tweet Sentiment Analyzer Dashboard
 
-Description of the app ...
+A sleek Streamlit web app that analyzes the sentiment of tweets in real time. Paste any tweet, and the app will:
+
+* Preprocess and clean the text
+
+* Compute sentiment metrics: Polarity, Subjectivity, VADER score, and word-counts
+
+* Convert the text into a TF-IDF vector
+
+* Predict the overall sentiment (Negative, Neutral, Positive) using a trained machine learning model
 
 ## Demo App
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://app-starter-kit.streamlit.app/)
-
-## GitHub Codespaces
-
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/app-starter-kit?quickstart=1)
-
-## Section Heading
-
-This is filler text, please replace this with text for this section.
-
-## Further Reading
-
-This is filler text, please replace this with a explanatory text about further relevant resources for this repo
-- Resource 1
-- Resource 2
-- Resource 3
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://tweet-sentiment-analyser.streamlit.app/)
