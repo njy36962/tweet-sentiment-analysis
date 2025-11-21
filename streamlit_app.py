@@ -26,7 +26,7 @@ st.write("A chill and clean  data-driven sentiment analysis dashboard.")
 st.set_page_config(layout="wide")  
 
 # User Input 
-st.header("Analyze a Tweet!")
+st.header("🔎 Analyze a Tweet!")
 user_input = st.text_area("Enter a tweet:", height=120)
 
 button_clicked = st.button("Analyze")
@@ -48,7 +48,7 @@ if button_clicked:
         if sentiment_label == "Irrelevant":
             sentiment_label = "Neutral"
 
-        st.subheader("🔎 Sentiment Analysis Result")
+        st.subheader("📝 Sentiment Analysis Result")
         st.metric("Predicted Sentiment", sentiment_label)
 
         col1, col2, col3 = st.columns(3)
@@ -86,7 +86,7 @@ sentiment_counts = df["Sentiment"].value_counts()
 st.bar_chart(sentiment_counts, height=500, y_label="Count", x_label="Sentiment")
 
 # WordCloud 
-st.subheader("Word Cloud for Each Sentiment Type")
+st.subheader("Word Cloud for Each Sentiment")
 
 col_neg, col_neu, col_pos = st.columns(3)
 
