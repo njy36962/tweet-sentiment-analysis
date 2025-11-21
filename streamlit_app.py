@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+
 from text_processing import extract_features
 
 # Load models
@@ -68,6 +71,8 @@ if button_clicked:
 st.header("📊 Dataset Sentiment Breakdown")
 
 df = pd.read_csv("tweets.csv")
+df.dropna(inplace=True)
+df.drop_duplicates(inplace=True)
 df = df[df["Sentiment"] != "Irrelevant"]
 
 #Raw data display
@@ -78,4 +83,25 @@ st.dataframe(df)
 st.subheader("Sentiment Distribution")
 sentiment_counts = df["Sentiment"].value_counts()
 
-st.bar_chart(sentiment_counts, height=500)
+st.bar_chart(sentiment_counts, height=500, y_label="Count", x_label="Sentiment")
+
+# WordCloud 
+st.subheader("Word Cloud for Each Sentiment Type")
+
+col_neg, col_neu, col_pos = st.columns(3)
+
+sentiment_types = {col_neg: "Negative",
+                   col_neu: "Neutral",
+                   col_pos: "Positive"}
+
+for column, sentiment in sentiment_types.items():
+    column.text(f"{sentiment} Sentiment")
+    text = " ".join(df[df['Sentiment'] == sentiment]['Text']).lower()
+    wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
+
+    fig, ax = plt.subplots(figsize=(10, 10))
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis('off')
+
+    column.pyplot(fig)
+ 
