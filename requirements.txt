@@ -5,3 +5,5 @@ joblib
 nltk
 textblob
 scikit-learn
+matplotlib
+wordcloud
