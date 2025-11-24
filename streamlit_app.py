@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import joblib
 import matplotlib.pyplot as plt
+import altair as alt
 from wordcloud import WordCloud
 
 from text_processing import extract_features
@@ -81,9 +82,14 @@ st.dataframe(df)
 
 # Sentiment type distribution
 st.subheader("Sentiment Distribution")
-sentiment_counts = df["Sentiment"].value_counts()
+sentiment_counts = df["Sentiment"].value_counts().reset_index()
 
-st.bar_chart(sentiment_counts, height=500, y_label="Count", x_label="Sentiment")
+chart = alt.Chart(sentiment_counts).mark_bar().encode(
+    x=alt.X('Sentiment:N', title='Sentiment Type', axis=alt.Axis(labelAngle=0)),
+    y=alt.Y('count:Q', title='Number of Tweets')
+).properties(height=450)
+st.altair_chart(chart, use_container_width=True)
+
 
 # WordCloud 
 st.subheader("Word Cloud for Each Sentiment")
